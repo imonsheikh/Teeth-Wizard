@@ -4,7 +4,8 @@ import './Navbar.css'
 
 const Navbar = () => {
     return (
-        <div className='min-h-20 bg-blue-500 flex justify-between items-center text-white'>
+       <div className='bg-blue-500'>
+          <div className='min-h-20  flex justify-between items-center text-white w-[80%] mx-auto max-w-[1200px]'>
             <div>
                <h1 className='text-xl font-extrabold'>TEETH WiZARD</h1>
             </div>
@@ -17,9 +18,10 @@ const Navbar = () => {
               <NavLink to='/profile'>Profile</NavLink>  
             </div>
             <div>
-                <button className='btn btn-primary'>Login</button>
+                <NavLink to='/' className='btn btn-primary'>Login</NavLink>
             </div>
         </div>
+       </div>
     );
 };
 
