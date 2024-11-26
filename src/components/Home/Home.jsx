@@ -6,8 +6,8 @@ import FeedBack from '../FeedBack/FeedBack';
 const Home = () => {
 
     const services = useLoaderData()
-    console.log(services.serviceData);
-    console.log(services.feedBackData);
+    // console.log(services.serviceData);
+    // console.log(services.feedBackData);
 
     const {serviceData, feedBackData} = services
 
@@ -17,9 +17,9 @@ const Home = () => {
     
 
     return (
-        <div>
+        <div className='w-[80%] mx-auto max-w-[1200px]'>
              <Banner></Banner>
-             <div className='mt-6 grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 w-[80%] mx-auto max-w-[1200px]'>
+             <div className='mt-6 grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 '>
                 {
                     serviceData.slice(0,4).map(service => <ServiceCard 
                         key={service.id}
