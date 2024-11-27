@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Modal from '../Modal/Modal';
+import { authContext } from '../AuthProvider/AuthProvider';
 
 const Details = () => {
 
     const {id,treatment,image,description} = useLoaderData()
     // console.log(singleData);
+
+    const contextValue = useContext(authContext)
+    console.log(contextValue);
+    
     
 
     return (
@@ -27,7 +32,7 @@ const Details = () => {
           </div>
         </div>
 
-           <Modal></Modal>
+           <Modal></Modal> 
 
       </div>
     );
