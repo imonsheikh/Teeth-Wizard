@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authContext } from "../AuthProvider/AuthProvider";
 
-const Modal = () => {
+const Modal = ({treatment}) => {
 
+  const {user} = useContext(authContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(e);
-    
+
+    const fname = e.target.Fname.value 
+    const lname = e.target.Lname.value 
+    const email = e.target.email.value 
+
+    const info = {
+      fname,lname,email,treatment
+    }
+   
+    let saveData = []
+    const localData = localStorage.getItem('appointment')
+    if(localData){
+      saveData = JSON.parse(localData)
+    }
+    saveData.push(info)   
+    localStorage.setItem('appointment', JSON.stringify(saveData)) 
   }
 
   return (
@@ -39,6 +56,7 @@ const Modal = () => {
               Email: 
               <input
               name="email"
+              value={user?.email}
               type="text"
               placeholder="Type here"
               className="input input-bordered input-primary w-full max-w-xs"

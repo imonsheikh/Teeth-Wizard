@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css'
+import { authContext } from '../AuthProvider/AuthProvider';
 
 const Navbar = () => {
+
+   const {user, handleLogout} = useContext(authContext)
+   console.log(user);
+   
+
     return (
        <div className='bg-blue-500'>
           <div className='min-h-20  flex justify-between items-center text-white w-[80%] mx-auto max-w-[1200px]'>
@@ -18,7 +24,18 @@ const Navbar = () => {
               <NavLink to='/profile'>Profile</NavLink>  
             </div>
             <div>
-                <NavLink to='/' className='btn btn-primary'>Login</NavLink>
+               {
+                  user?.email ? (
+                     <div>
+                        <img src={user.photoURL} alt="photo"  className='rounded-full w-7 h-7' />
+
+                        <button onClick={handleLogout}>Logout</button>
+                     </div>
+                  ) : (
+
+                     <NavLink to='/login' className='btn btn-primary'>Login</NavLink>
+                  )
+               }
             </div>
         </div>
        </div>
